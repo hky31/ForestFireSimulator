@@ -10,12 +10,12 @@ public class ForestFireSimulatorSystem
     /// <summary>
     /// variable representant la taille de la foret
     /// </summary>
-    private const int SIZE = 20; 
+    private const int SIZE = 20;
 
     /// <summary>
     /// variable representant la foret
     /// </summary>
-    private TreeState[,] forest = new TreeState[SIZE, SIZE]; 
+    private TreeState[,] forest = new TreeState[SIZE, SIZE];
 
     /// <summary>
     /// variable randomiser de chance d'avoir une case vide ou une case arbre
@@ -44,14 +44,22 @@ public class ForestFireSimulatorSystem
         {
             for (int j = 0; j < SIZE; j++)
             {
-                newForest[i, j] = forest[i, j] switch
+                // newForest[i, j] = forest[i, j] switch
+                // {
+                //     TreeState.Empty => TreeState.Empty,
+                //     TreeState.Fire => TreeState.Ash,
+                //     TreeState.Ash => TreeState.Ash,
+                //     TreeState.Tree => HasBurningNeighbor(i, j) ? TreeState.Fire : TreeState.Tree,
+                //     _ => forest[i, j]
+                // };
+                switch (forest[i, j])
                 {
-                    TreeState.Empty => TreeState.Empty,
-                    TreeState.Fire => TreeState.Ash,
-                    TreeState.Ash => TreeState.Ash,
-                    TreeState.Tree => HasBurningNeighbor(i, j) ? TreeState.Fire : TreeState.Tree,
-                    _ => forest[i, j]
-                };
+                    case TreeState.Empty: newForest[i, j] = TreeState.Empty; break;
+                    case TreeState.Fire: newForest[i, j] = TreeState.Ash; break;
+                    case TreeState.Ash: newForest[i, j] = TreeState.Ash; break;
+                    case TreeState.Tree: newForest[i, j] = HasBurningNeighbor(i, j) ? TreeState.Fire : TreeState.Tree; break;
+                    default: newForest[i, j] = forest[i, j]; break;
+                }
             }
         }
 
@@ -68,13 +76,13 @@ public class ForestFireSimulatorSystem
             for (int j = 0; j < SIZE; j++)
             {
                 // initialise de maniere aleatoire du vide ou un arbre sur chaque case de la foret, 80% de chance d'avoir un arbre 
-                forest[i, j] = rand.NextDouble() < 0.8 ? TreeState.Tree : TreeState.Empty;
+                forest[i, j] = rand.NextDouble() < 0.9 ? TreeState.Tree : TreeState.Empty;
             }
         }
 
         // Départs de feu à différents emplacements
         forest[SIZE / 2, SIZE / 2] = TreeState.Fire;
-        forest[SIZE / 4, SIZE / 2] = TreeState.Fire;
+        // forest[SIZE / 4, SIZE / 2] = TreeState.Fire;
         forest[SIZE / 4, SIZE / 4] = TreeState.Fire;
     }
 
@@ -85,11 +93,25 @@ public class ForestFireSimulatorSystem
     /// <param name="x">valeur abscisse de l'arbre</param>
     /// <param name="y">valeur ordonnee de l'arbre</param>
     /// <returns>true si un voisin de l'arbre est en feu</returns>
-    private bool HasBurningNeighbor(int x, int y) =>
-        (x > 0 && forest[x - 1, y] == TreeState.Fire) ||
-        (x < SIZE - 1 && forest[x + 1, y] == TreeState.Fire) ||
-        (y > 0 && forest[x, y - 1] == TreeState.Fire) ||
-        (y < SIZE - 1 && forest[x, y + 1] == TreeState.Fire);
+    // private bool HasBurningNeighbor(int x, int y) =>
+    //     (x > 0 && forest[x - 1, y] == TreeState.Fire) ||
+    //     (x < SIZE - 1 && forest[x + 1, y] == TreeState.Fire) ||
+    //     (y > 0 && forest[x, y - 1] == TreeState.Fire) ||
+    //     (y < SIZE - 1 && forest[x, y + 1] == TreeState.Fire);
+
+    private bool HasBurningNeighbor(int x, int y)
+    {
+        // Vérifie les 4 voisins (haut, bas, gauche, droite)
+        if (x > 0 && forest[x - 1, y] == TreeState.Fire) // haut
+            return true;
+        if (x < SIZE - 1 && forest[x + 1, y] == TreeState.Fire) // bas
+            return true;
+        if (y > 0 && forest[x, y - 1] == TreeState.Fire) // gauche
+            return true;
+        if (y < SIZE - 1 && forest[x, y + 1] == TreeState.Fire) // droite
+            return true;
+        return false;
+    }
 }
 
 

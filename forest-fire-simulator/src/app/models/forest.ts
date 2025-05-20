@@ -3,4 +3,5 @@ export interface Forest {
   cells: TreeState[][]; // tableau jagged
 }
 
-export type TreeState = 'Empty' | 'Tree' | 'Fire' | 'Ash';
+// 0 | 1 | 2 | 3 = 'Empty' | 'Tree' | 'Fire' | 'Ash';
+export type TreeState = 0 | 1 | 2 | 3;

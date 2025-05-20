@@ -18,7 +18,7 @@ public class Program
         {
             forest = new Forest(20);
             forest.InitializeRandom();
-            forest.Ignite(10, 10);
+            forest.Ignite();
         }
 
         var simulator = new FireSimulationService(forest);

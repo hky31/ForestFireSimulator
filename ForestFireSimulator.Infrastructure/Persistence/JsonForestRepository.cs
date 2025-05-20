@@ -42,6 +42,6 @@ public class JsonForestRepository : IForestRepository
             forest.Cells = data.Cells;
             return forest;
         }
-        return new Forest(10);
+        return new Forest(5);
     }
 }

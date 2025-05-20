@@ -31,7 +31,15 @@ public class Forest
     /// </summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
-    public void Ignite(int x, int y) => Cells[x][y] = TreeState.Fire;
+    public void Ignite()
+    {
+        var rand = new Random();
+        var rand_x = rand.Next(Size);
+        var rand_y = rand.Next(Size);
+        Cells[rand_x][rand_y] = TreeState.Fire;
+        Cells[rand_y][rand_x] = TreeState.Fire;
+        // Cells[1][1] = TreeState.Fire;
+    }
 
     /// <summary>
     /// methode d'initialisation de la foret
@@ -56,4 +64,17 @@ public class Forest
         Array.Copy(Cells, clone.Cells, Cells.Length);
         return clone;
     }
+    // public Forest Clone()
+    // {
+    //     var clone = new Forest(Size);
+    //     for (int i = 0; i < Size; i++)
+    //     {
+    //         for (int j = 0; j < Size; j++)
+    //         {
+    //             clone.Cells[i][j] = this.Cells[i][j];
+    //         }
+    //     }
+    //     return clone;
+    // }
+
 }

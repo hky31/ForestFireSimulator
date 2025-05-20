@@ -32,15 +32,28 @@ export class ForestComponent implements OnInit {
     });
   }
 
+  saveCurrentForest() {
+    if (this.forest == null) return;
+    this.forestService.save(this.forest).subscribe((data) => {
+      //this.forest = data;
+    });
+  }
+
+  restoreForest() {
+    this.forestService.restore('.').subscribe((data) => {
+      this.forest = data;
+    });
+  }
+
   getEmoji(cell: TreeState): string {
     switch (cell) {
-      case 'Tree':
-        return '🌲';
-      case 'Fire':
-        return '🔥';
-      case 'Ash':
+      case 0:
         return '🟫';
-      case 'Empty':
+      case 1:
+        return '🌲';
+      case 2:
+        return '🔥';
+      case 3:
         return '⬛';
       default:
         return '?';
