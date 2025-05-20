@@ -1,0 +1,14 @@
+<div class="controls">
+  <button (click)="initForest()">🌱 Réinitialiser</button>
+  <button (click)="nextStep()">⏭️ Étape suivante</button>
+</div>
+
+<div *ngIf="forest">
+  <table class="forest-grid">
+    <tr *ngFor="let row of forest.cells">
+      <td *ngFor="let cell of row" class="cell">
+        {{ getEmoji(cell) }}
+      </td>
+    </tr>
+  </table>
+</div>
