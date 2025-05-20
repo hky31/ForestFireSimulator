@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "gxGv0fbYIeSWqlChYIcW0AafJ2wgm0wS5/WsjtWGWKA=",
+  "Source": "ForestFireSimulator.Application",
+  "BasePath": "_content/ForestFireSimulator.Application",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
