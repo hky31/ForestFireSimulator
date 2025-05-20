@@ -10,18 +10,18 @@ export class ForestService {
   constructor(private http: HttpClient) {}
 
   initForest(size: number): Observable<Forest> {
-    return this.http.post<Forest>(`${this.apiUrl}/init?size=${size}`, {});
+    return this.http.post<Forest>(`${this.apiUrl}/init`, size);
   }
 
   step(forest: Forest): Observable<Forest> {
     return this.http.post<Forest>(`${this.apiUrl}/step`, forest);
   }
 
-  save(forest: Forest, path: string): Observable<void> {
-    return this.http.post<void>(`${this.apiUrl}/save?path=${path}`, forest);
+  save(forest: Forest): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/save`, forest);
   }
 
-  load(path: string): Observable<Forest> {
+  restore(path: string): Observable<Forest> {
     return this.http.get<Forest>(`${this.apiUrl}/load?path=${path}`);
   }
 }
