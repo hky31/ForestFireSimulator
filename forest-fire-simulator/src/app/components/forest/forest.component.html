@@ -1,6 +1,8 @@
 <div class="controls">
-  <button (click)="initForest()">🌱 Réinitialiser</button>
+  <!--button (click)="restoreForest()">⬆️ Charger</button-->
+  <button (click)="initForest()">🔄 Réinitialiser</button>
   <button (click)="nextStep()">⏭️ Étape suivante</button>
+  <button (click)="saveCurrentForest()">💾 Sauvegarder</button>
 </div>
 
 <div *ngIf="forest">
