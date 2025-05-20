@@ -1,0 +1,24 @@
+{
+  "Version": 1,
+  "Hash": "5LPJDJv8S4mV/a9a3WVgXt6Etj6Lq2vlHGwG9SpLfBs=",
+  "Source": "ForestFireSimulator.WebApi",
+  "BasePath": "_content/ForestFireSimulator.WebApi",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "/Users/sheng/Documents/VS Projects/fire-simulator/ForestFireSimulator.Application/ForestFireSimulator.Application.csproj",
+      "Version": 2,
+      "Source": "ForestFireSimulator.Application",
+      "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

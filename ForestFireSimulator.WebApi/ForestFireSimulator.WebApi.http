@@ -1,0 +1,6 @@
+@ForestFireSimulator.WebApi_HostAddress = http://localhost:5288
+
+GET {{ForestFireSimulator.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
