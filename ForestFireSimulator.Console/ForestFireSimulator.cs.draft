@@ -1,0 +1,228 @@
+// Project structure:
+// - Domain/
+//     Entities/
+//         Forest.cs
+//         TreeState.cs
+//     Services/
+//         FireSimulationService.cs
+// - Infrastructure/
+//     Persistence/
+//         JsonForestRepository.cs
+// - Application/
+//     Interfaces/
+//         IForestRepository.cs
+// - Program.cs
+
+// Domain/Entities/TreeState.cs
+namespace Domain.Entities
+{
+    public enum TreeState
+    {
+        Empty = 0,
+        Tree = 1,
+        Fire = 2,
+        Ash = 3
+    }
+}
+
+// Domain/Entities/Forest.cs
+using System;
+
+namespace Domain.Entities
+{
+    public class Forest
+    {
+        public int Size { get; private set; }
+        public TreeState[,] Cells { get; private set; }
+
+        public Forest(int size)
+        {
+            Size = size;
+            Cells = new TreeState[size, size];
+        }
+
+        public void Ignite(int x, int y) => Cells[x, y] = TreeState.Fire;
+
+        public void InitializeRandom(double treeProbability = 0.8)
+        {
+            var rand = new Random();
+            for (int i = 0; i < Size; i++)
+            {
+                for (int j = 0; j < Size; j++)
+                {
+                    Cells[i, j] = rand.NextDouble() < treeProbability ? TreeState.Tree : TreeState.Empty;
+                }
+            }
+        }
+
+        public Forest Clone()
+        {
+            var clone = new Forest(Size);
+            Array.Copy(Cells, clone.Cells, Cells.Length);
+            return clone;
+        }
+    }
+}
+
+// Domain/Services/FireSimulationService.cs
+using Domain.Entities;
+
+namespace Domain.Services
+{
+    public class FireSimulationService
+    {
+        private Forest forest;
+
+        public FireSimulationService(Forest forest)
+        {
+            this.forest = forest;
+        }
+
+        public Forest GetForest() => forest.Clone();
+
+        public void Step()
+        {
+            var newForest = forest.Clone();
+            for (int i = 0; i < forest.Size; i++)
+            {
+                for (int j = 0; j < forest.Size; j++)
+                {
+                    switch (forest.Cells[i, j])
+                    {
+                        case TreeState.Empty:
+                            break;
+                        case TreeState.Fire:
+                            newForest.Cells[i, j] = TreeState.Ash;
+                            break;
+                        case TreeState.Ash:
+                            break;
+                        case TreeState.Tree:
+                            if (HasBurningNeighbor(i, j))
+                                newForest.Cells[i, j] = TreeState.Fire;
+                            break;
+                    }
+                }
+            }
+            forest = newForest;
+        }
+
+        private bool HasBurningNeighbor(int x, int y)
+        {
+            int size = forest.Size;
+            var c = forest.Cells;
+            return (x > 0 && c[x - 1, y] == TreeState.Fire) ||
+                   (x < size - 1 && c[x + 1, y] == TreeState.Fire) ||
+                   (y > 0 && c[x, y - 1] == TreeState.Fire) ||
+                   (y < size - 1 && c[x, y + 1] == TreeState.Fire);
+        }
+    }
+}
+
+// Application/Interfaces/IForestRepository.cs
+using Domain.Entities;
+
+namespace Application.Interfaces
+{
+    public interface IForestRepository
+    {
+        void Save(Forest forest, string path);
+        Forest Load(string path);
+    }
+}
+
+// Infrastructure/Persistence/JsonForestRepository.cs
+using Domain.Entities;
+using Application.Interfaces;
+using System.IO;
+using System.Text.Json;
+
+namespace Infrastructure.Persistence
+{
+    public class JsonForestRepository : IForestRepository
+    {
+        private class ForestData
+        {
+            public int Size { get; set; }
+            public TreeState[,] Cells { get; set; }
+        }
+
+        public void Save(Forest forest, string path)
+        {
+            var data = new ForestData { Size = forest.Size, Cells = forest.Cells };
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            File.WriteAllText(path, JsonSerializer.Serialize(data, options));
+        }
+
+        public Forest Load(string path)
+        {
+            var json = File.ReadAllText(path);
+            var data = JsonSerializer.Deserialize<ForestData>(json);
+            var forest = new Forest(data.Size);
+            forest.Cells = data.Cells;
+            return forest;
+        }
+    }
+}
+
+// Program.cs
+using Domain.Entities;
+using Domain.Services;
+using Infrastructure.Persistence;
+using Application.Interfaces;
+
+class Program
+{
+    static void Main()
+    {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+
+        IForestRepository repository = new JsonForestRepository();
+        Forest forest;
+
+        if (File.Exists("forest.json"))
+            forest = repository.Load("forest.json");
+        else
+        {
+            forest = new Forest(20);
+            forest.InitializeRandom();
+            forest.Ignite(10, 10);
+        }
+
+        var simulator = new FireSimulationService(forest);
+
+        while (true)
+        {
+            Console.Clear();
+            Display(simulator.GetForest());
+            simulator.Step();
+
+            Console.WriteLine("[S] Save, [Q] Quit, any key to continue...");
+            var key = Console.ReadKey(true).Key;
+            if (key == ConsoleKey.S)
+                repository.Save(simulator.GetForest(), "forest.json");
+            else if (key == ConsoleKey.Q)
+                break;
+
+            Thread.Sleep(500);
+        }
+    }
+
+    static void Display(Forest forest)
+    {
+        for (int i = 0; i < forest.Size; i++)
+        {
+            for (int j = 0; j < forest.Size; j++)
+            {
+                Console.Write(forest.Cells[i, j] switch
+                {
+                    TreeState.Tree => "🌲",
+                    TreeState.Fire => "🔥",
+                    TreeState.Ash => "⬛",
+                    TreeState.Empty => "⬜",
+                    _ => "?"
+                });
+            }
+            Console.WriteLine();
+        }
+    }
+}
