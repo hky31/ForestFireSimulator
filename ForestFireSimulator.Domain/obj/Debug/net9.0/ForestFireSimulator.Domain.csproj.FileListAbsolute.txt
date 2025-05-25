@@ -9,3 +9,15 @@
 /Users/sheng/Documents/VS Projects/fire-simulator/ForestFireSimulator.Domain/obj/Debug/net9.0/refint/ForestFireSimulator.Domain.dll
 /Users/sheng/Documents/VS Projects/fire-simulator/ForestFireSimulator.Domain/obj/Debug/net9.0/ForestFireSimulator.Domain.pdb
 /Users/sheng/Documents/VS Projects/fire-simulator/ForestFireSimulator.Domain/obj/Debug/net9.0/ref/ForestFireSimulator.Domain.dll
+/Users/sheng/Documents/VS Projects/ForestFireSimulator/ForestFireSimulator.Domain/bin/Debug/net9.0/ForestFireSimulator.Domain.deps.json
+/Users/sheng/Documents/VS Projects/ForestFireSimulator/ForestFireSimulator.Domain/bin/Debug/net9.0/ForestFireSimulator.Domain.dll
+/Users/sheng/Documents/VS Projects/ForestFireSimulator/ForestFireSimulator.Domain/bin/Debug/net9.0/ForestFireSimulator.Domain.pdb
+/Users/sheng/Documents/VS Projects/ForestFireSimulator/ForestFireSimulator.Domain/obj/Debug/net9.0/ForestFireSimulator.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sheng/Documents/VS Projects/ForestFireSimulator/ForestFireSimulator.Domain/obj/Debug/net9.0/ForestFireSimulator.Domain.AssemblyInfoInputs.cache
+/Users/sheng/Documents/VS Projects/ForestFireSimulator/ForestFireSimulator.Domain/obj/Debug/net9.0/ForestFireSimulator.Domain.AssemblyInfo.cs
+/Users/sheng/Documents/VS Projects/ForestFireSimulator/ForestFireSimulator.Domain/obj/Debug/net9.0/ForestFireSimulator.Domain.csproj.CoreCompileInputs.cache
+/Users/sheng/Documents/VS Projects/ForestFireSimulator/ForestFireSimulator.Domain/obj/Debug/net9.0/ForestFireSimulator.Domain.sourcelink.json
+/Users/sheng/Documents/VS Projects/ForestFireSimulator/ForestFireSimulator.Domain/obj/Debug/net9.0/ForestFireSimulator.Domain.dll
+/Users/sheng/Documents/VS Projects/ForestFireSimulator/ForestFireSimulator.Domain/obj/Debug/net9.0/refint/ForestFireSimulator.Domain.dll
+/Users/sheng/Documents/VS Projects/ForestFireSimulator/ForestFireSimulator.Domain/obj/Debug/net9.0/ForestFireSimulator.Domain.pdb
+/Users/sheng/Documents/VS Projects/ForestFireSimulator/ForestFireSimulator.Domain/obj/Debug/net9.0/ref/ForestFireSimulator.Domain.dll

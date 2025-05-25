@@ -29,14 +29,29 @@ public class Program
             Display(simulator.GetForest());
             simulator.Step();
 
-            Console.WriteLine("[S] Save, [Q] Quit, any key to continue...");
+            Console.WriteLine("[R] Reinitialize, [S] Save, [Q] Quit, any key to continue...");
             var key = Console.ReadKey(true).Key;
-            if (key == ConsoleKey.S)
+            if (key == ConsoleKey.R)
+            {
+                Console.WriteLine("Reinitializing ...");
+                File.Delete("forest.json");
+                forest = new Forest(20);
+                forest.InitializeRandom();
+                forest.Ignite();
+                simulator = new FireSimulationService(forest);
+            }
+            else if (key == ConsoleKey.S)
+            {
+                Console.WriteLine("Saving ...");
                 repository.Save(simulator.GetForest(), "forest.json");
+            }
             else if (key == ConsoleKey.Q)
+            {
+                Console.WriteLine("Exit app ...");
                 break;
+            }
 
-            Thread.Sleep(1500);
+            Thread.Sleep(2000);
         }
     }
 

@@ -1,16 +1,74 @@
 <div class="controls">
-  <!--button (click)="restoreForest()">⬆️ Charger</button-->
-  <button (click)="initForest()">🔄 Réinitialiser</button>
-  <button (click)="nextStep()">⏭️ Étape suivante</button>
-  <button (click)="saveCurrentForest()">💾 Sauvegarder</button>
+	<!--button (click)="restoreForest()">⬆️ Charger</button-->
+	<button (click)="initForest()" [disabled]="isRunning">
+		🔄 Réinitialiser
+	</button>
+	<button (click)="toogleSimulation()">
+		{{ isRunning ? "⏸️ Pause" : "▶️ Lecture" }}
+	</button>
+	<button (click)="nextStep()">⏭️ Étape suivante</button>
+	<button (click)="saveCurrentForest()">💾 Sauvegarder</button>
+
+	<mat-card class="example-result-card">
+		<mat-card-content>
+			<h2>Simulation</h2>
+
+			<div class="example-label-container">
+				<label id="example-name-label" class="example-name-label"
+					>Forest size&nbsp;&nbsp;&nbsp;</label
+				>
+				<mat-slider
+					class="example-margin"
+					[disabled]="isRunning"
+					[max]="50"
+					[min]="4"
+					[step]="2"
+					[discrete]="true"
+					[showTickMarks]="true"
+					[disabled]="isRunning">
+					<input matSliderThumb [(ngModel)]="size" #slider /> </mat-slider
+				>&nbsp;&nbsp;&nbsp;
+				<label class="example-value-label">{{ slider.value }} cases</label
+				>&nbsp;&nbsp;&nbsp;
+				<button
+					mat-flat-button
+					[disabled]="isRunning"
+					(click)="setForestSize(slider.value)">
+					Set size
+				</button>
+			</div>
+
+			<div class="example-label-container">
+				<label id="example-name-label" class="example-name-label"
+					>Interval speed &nbsp;&nbsp;&nbsp;</label
+				>
+				<mat-slider
+					class="example-margin"
+					[disabled]="isRunning"
+					[max]="5000"
+					[min]="500"
+					[step]="500"
+					[discrete]="true"
+					[showTickMarks]="true"
+					[disabled]="isRunning">
+					<input
+						matSliderThumb
+						[(ngModel)]="intervalValue"
+						#slider /> </mat-slider
+				>&nbsp;&nbsp;&nbsp;
+				<label class="example-value-label">{{ slider.value }}ms</label>
+			</div>
+			<p>step count : {{ stepCount }}</p>
+		</mat-card-content>
+	</mat-card>
 </div>
 
 <div *ngIf="forest">
-  <table class="forest-grid">
-    <tr *ngFor="let row of forest.cells">
-      <td *ngFor="let cell of row" class="cell">
-        {{ getEmoji(cell) }}
-      </td>
-    </tr>
-  </table>
+	<table class="forest-grid">
+		<tr *ngFor="let row of forest.cells">
+			<td *ngFor="let cell of row" class="cell">
+				{{ getEmoji(cell) }}
+			</td>
+		</tr>
+	</table>
 </div>

@@ -58,23 +58,23 @@ public class Forest
         }
     }
 
-    public Forest Clone()
-    {
-        var clone = new Forest(Size);
-        Array.Copy(Cells, clone.Cells, Cells.Length);
-        return clone;
-    }
     // public Forest Clone()
     // {
     //     var clone = new Forest(Size);
-    //     for (int i = 0; i < Size; i++)
-    //     {
-    //         for (int j = 0; j < Size; j++)
-    //         {
-    //             clone.Cells[i][j] = this.Cells[i][j];
-    //         }
-    //     }
+    //     Array.Copy(Cells, clone.Cells, Cells.Length);
     //     return clone;
     // }
+    public Forest Clone()
+    {
+        var clone = new Forest(Size);
+        for (int i = 0; i < Size; i++)
+        {
+            for (int j = 0; j < Size; j++)
+            {
+                clone.Cells[i][j] = this.Cells[i][j];
+            }
+        }
+        return clone;
+    }
 
 }

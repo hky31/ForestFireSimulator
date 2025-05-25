@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SyS17N5zOxs=",
+  "dgSpecHash": "XZsvWkraS2Q=",
   "success": true,
-  "projectFilePath": "/Users/sheng/Documents/VS Projects/fire-simulator/ForestFireSimulator.Infrastructure/ForestFireSimulator.Infrastructure.csproj",
+  "projectFilePath": "/Users/sheng/Documents/VS Projects/ForestFireSimulator/ForestFireSimulator.Infrastructure/ForestFireSimulator.Infrastructure.csproj",
   "expectedPackageFiles": [
     "/Users/sheng/.nuget/packages/microsoft.aspnetcore.openapi/9.0.4/microsoft.aspnetcore.openapi.9.0.4.nupkg.sha512",
     "/Users/sheng/.nuget/packages/microsoft.openapi/1.6.17/microsoft.openapi.1.6.17.nupkg.sha512"

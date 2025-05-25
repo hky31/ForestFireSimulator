@@ -118,11 +118,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/sheng/Documents/VS Projects/fire-simulator/ForestFireSimulator.Infrastructure/ForestFireSimulator.Infrastructure.csproj",
+      "projectUniqueName": "/Users/sheng/Documents/VS Projects/ForestFireSimulator/ForestFireSimulator.Infrastructure/ForestFireSimulator.Infrastructure.csproj",
       "projectName": "ForestFireSimulator.Infrastructure",
-      "projectPath": "/Users/sheng/Documents/VS Projects/fire-simulator/ForestFireSimulator.Infrastructure/ForestFireSimulator.Infrastructure.csproj",
+      "projectPath": "/Users/sheng/Documents/VS Projects/ForestFireSimulator/ForestFireSimulator.Infrastructure/ForestFireSimulator.Infrastructure.csproj",
       "packagesPath": "/Users/sheng/.nuget/packages/",
-      "outputPath": "/Users/sheng/Documents/VS Projects/fire-simulator/ForestFireSimulator.Infrastructure/obj/",
+      "outputPath": "/Users/sheng/Documents/VS Projects/ForestFireSimulator/ForestFireSimulator.Infrastructure/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/sheng/.nuget/NuGet/NuGet.Config"
@@ -137,11 +137,11 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "/Users/sheng/Documents/VS Projects/fire-simulator/ForestFireSimulator.Application/ForestFireSimulator.Application.csproj": {
-              "projectPath": "/Users/sheng/Documents/VS Projects/fire-simulator/ForestFireSimulator.Application/ForestFireSimulator.Application.csproj"
+            "/Users/sheng/Documents/VS Projects/ForestFireSimulator/ForestFireSimulator.Application/ForestFireSimulator.Application.csproj": {
+              "projectPath": "/Users/sheng/Documents/VS Projects/ForestFireSimulator/ForestFireSimulator.Application/ForestFireSimulator.Application.csproj"
             },
-            "/Users/sheng/Documents/VS Projects/fire-simulator/ForestFireSimulator.Domain/ForestFireSimulator.Domain.csproj": {
-              "projectPath": "/Users/sheng/Documents/VS Projects/fire-simulator/ForestFireSimulator.Domain/ForestFireSimulator.Domain.csproj"
+            "/Users/sheng/Documents/VS Projects/ForestFireSimulator/ForestFireSimulator.Domain/ForestFireSimulator.Domain.csproj": {
+              "projectPath": "/Users/sheng/Documents/VS Projects/ForestFireSimulator/ForestFireSimulator.Domain/ForestFireSimulator.Domain.csproj"
             }
           }
         }

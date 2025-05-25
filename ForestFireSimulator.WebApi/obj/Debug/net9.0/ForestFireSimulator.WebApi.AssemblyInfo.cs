@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ForestFireSimulator.WebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+71d478993faf0fe073ad80393b25fb21fc28590e")]
 [assembly: System.Reflection.AssemblyProductAttribute("ForestFireSimulator.WebApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ForestFireSimulator.WebApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

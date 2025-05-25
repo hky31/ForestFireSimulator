@@ -47,7 +47,7 @@ public class FireSimulationService
     /// <summary>
     /// etape d'expansion du feu de foret
     /// </summary>
-    public void Step()
+    public void Step_old()
     {
         var newForest = forest.Clone();
 
@@ -67,6 +67,38 @@ public class FireSimulationService
         }
 
         forest = newForest;
+    }
+    public void Step()
+    {
+        int size = forest.Size;
+        TreeState[][] current = forest.Cells;
+        TreeState[][] next = new TreeState[size][];
+
+        // Initialiser le tableau "next"
+        for (int i = 0; i < size; i++)
+        {
+            next[i] = new TreeState[size];
+            for (int j = 0; j < size; j++)
+            {
+                TreeState state = current[i][j];
+
+                if (state == TreeState.Fire)
+                {
+                    next[i][j] = TreeState.Ash;
+                }
+                else if (state == TreeState.Tree && HasBurningNeighbor(i, j))
+                {
+                    next[i][j] = TreeState.Fire;
+                }
+                else
+                {
+                    next[i][j] = state;
+                }
+            }
+        }
+
+        // Mise à jour de la forêt
+        forest.Cells = next;
     }
 
     /// <summary>

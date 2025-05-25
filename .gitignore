@@ -1,0 +1,49 @@
+# Compiled output
+/dist
+/out-tsc
+
+# Node modules
+/node_modules
+
+# Build artifacts
+/build
+/tmp
+/temp
+
+# System files
+.DS_Store
+Thumbs.db
+
+# IDEs / editors
+.vscode
+.idea
+*.sw?
+
+# Environment files (ne jamais commit `.env` ou secrets)
+/.env
+*.env
+.env.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Angular specific
+.angular/cache
+.angular/config.json
+
+# Coverage reports
+/coverage
+
+# Compiled TypeScript
+*.tsbuildinfo
+
+# Optional lock files (si tu n’utilises pas yarn ou npm lock)
+/package-lock.json
+/yarn.lock
+
+# Others
+*.log
+*.bak
+*.orig

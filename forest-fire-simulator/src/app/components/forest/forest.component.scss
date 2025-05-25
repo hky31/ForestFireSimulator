@@ -1,23 +1,27 @@
 .forest-grid {
-  border-collapse: collapse;
-  margin-top: 1rem;
+	border-collapse: collapse;
+	margin-top: 1rem;
 }
 
 .cell {
-  font-size: 1.2rem;
-  width: 1.5rem;
-  height: 1.5rem;
-  text-align: center;
-  padding: 0.1rem;
+	font-size: 1.2rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	text-align: center;
+	padding: 0.1rem;
 }
 
 .controls {
-  margin-bottom: 1rem;
+	margin-bottom: 1rem;
 
-  button {
-    margin-right: 1rem;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    cursor: pointer;
-  }
+	button {
+		margin-right: 1rem;
+		padding: 0.5rem 1rem;
+		font-size: 1rem;
+		cursor: pointer;
+	}
+}
+.example-margin {
+	width: 500px; /* ou 100%, ou ce que tu veux */
+	margin: 20px 0;
 }
